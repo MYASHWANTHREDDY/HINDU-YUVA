@@ -12,8 +12,8 @@ function About() {
   }, [initialSection]);
 
   return (
-    <div className="pt-[20vh] p-10 pl-70 max-w-3xl">
-      <h1 className="text-4xl font-bold mb-8 whitespace-nowrap">About Hindu YUVA at CSUF</h1>
+  <div className="pt-[200px] p-10 min-h-screen bg-orange-50">
+  <h1 className="text-4xl font-bold mb-8 whitespace-nowrap text-center mx-auto">About Hindu YUVA at CSUF</h1>
       {/* Sections */}
       {openSection === 'mission' && (
         <section className="mb-10">

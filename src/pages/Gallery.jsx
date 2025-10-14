@@ -35,7 +35,7 @@ function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <div className="pt-[20vh] p-10 min-h-screen bg-orange-50">
+  <div className="pt-[200px] p-10 min-h-screen bg-orange-50">
       <h1 className="text-4xl font-bold mb-10 text-center">Gallery</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {events.map((event, idx) => (

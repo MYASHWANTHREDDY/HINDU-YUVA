@@ -29,7 +29,7 @@ function News() {
   const [modalItem, setModalItem] = useState(null);
 
   return (
-    <div className="pt-[20vh] p-10 min-h-screen bg-orange-50">
+  <div className="pt-[200px] p-10 min-h-screen bg-orange-50">
       <h1 className="text-4xl font-bold text-orange-600 mb-10 text-center">News & Announcements</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 px-8 md:px-20">
         {news.map((item, idx) => (
