@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-  <div className="bg-orange-50 min-h-screen pt-[20vh]">
+  <div className="bg-orange-50 min-h-screen pt-[200px]">
       <div className="text-center py-12">
         <h1 className="text-4xl md:text-5xl font-bold text-orange-700 mb-3">Hindu YUVA at CSUF</h1>
         <p className="text-lg text-orange-600 mb-6">Connecting, Inspiring, and Empowering Hindu Youth</p>
