@@ -1,7 +1,53 @@
+
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 function About() {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const initialSection = params.get("section") || "mission";
+  const [openSection, setOpenSection] = useState(initialSection);
+
+  useEffect(() => {
+    setOpenSection(initialSection);
+  }, [initialSection]);
+
   return (
-  <div className="pt-[20vh] p-10">
-      <h1 className="text-2xl font-bold">About Page</h1>
+    <div className="pt-[20vh] p-10 max-w-3xl mx-auto">
+      <h1 className="text-3xl font-bold text-center mb-8">About Hindu YUVA at CSUF</h1>
+
+      {/* Sections */}
+      {openSection === 'mission' && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-orange-700 mb-2">Mission & Vision</h2>
+          <p className="text-gray-700 mb-4">Our mission is to foster a vibrant Hindu community at California State University, Fullerton, promote cultural awareness, and empower students through events, service, and leadership opportunities. Our vision is to inspire and connect Hindu youth, nurturing future leaders who uphold the values of dharma, unity, and service.</p>
+        </section>
+      )}
+      {openSection === 'team' && (
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-orange-700 mb-2">Team</h2>
+          <ul className="list-disc list-inside text-gray-700">
+            <li>President: Dev Vyas</li>
+            <li>Vice President: Skanda</li>
+            <li>Secretary: Shalaka Sanap</li>
+            <li>Treasurer: Gaurav</li>
+            <li>Event Coordinators: Indrayani Bhoshle</li>
+            <li>Faculty Advisor: Kanika Sood</li>
+            <li>Advisor: Yashwanth Mallareddygari</li>
+          </ul>
+        </section>
+      )}
+      {openSection === 'timeline' && (
+        <section>
+          <h2 className="text-xl font-bold text-orange-700 mb-2">Timeline</h2>
+          <ul className="list-disc list-inside text-gray-700">
+            <li>Jan 2024: Hindu YUVA chapter founded at CSUF.</li>
+            <li>Mar 2024: First major cultural event and service project.</li>
+            <li>Aug 2024: Growth in membership and leadership initiatives.</li>
+            <li>Jan 2025: Expanded outreach and new collaborations.</li>
+          </ul>
+        </section>
+      )}
     </div>
   );
 }
