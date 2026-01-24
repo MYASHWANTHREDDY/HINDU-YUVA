@@ -8,13 +8,14 @@ import Gallery from './pages/Gallery';
 import Team from './pages/Team';
 import Join from './pages/Join';
 import News from './pages/News';
+import Contact from './pages/Contact';
 
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-white dark:bg-gray-950 transition-colors">
         <Navbar />
-        <main className="flex-grow pt-[50px] bg-orange-50">
+        <main className="flex-grow pt-[50px] bg-orange-50 dark:bg-gray-900 transition-colors">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -23,6 +24,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/team" element={<Team />} />
             <Route path="/join" element={<Join />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
