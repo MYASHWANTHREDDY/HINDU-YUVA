@@ -1,8 +1,8 @@
 /**
  * Card Component
- * 
+ *
  * A flexible card component for displaying content in a contained box.
- * 
+ *
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Card content
  * @param {string} props.className - Additional CSS classes
@@ -11,7 +11,7 @@
  * @param {string} props.padding - Padding size ('none', 'sm', 'md', 'lg')
  * @param {Function} props.onClick - Click handler (makes card clickable)
  * @returns {JSX.Element}
- * 
+ *
  * @example
  * <Card hoverable padding="lg">
  *   <Card.Header>Title</Card.Header>
@@ -60,11 +60,7 @@ function Card({
  * @returns {JSX.Element}
  */
 Card.Header = function CardHeader({ children, className = '' }) {
-  return (
-    <div className={`mb-4 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`mb-4 ${className}`}>{children}</div>;
 };
 
 /**
@@ -90,11 +86,7 @@ Card.Title = function CardTitle({ children, className = '' }) {
  * @returns {JSX.Element}
  */
 Card.Body = function CardBody({ children, className = '' }) {
-  return (
-    <div className={`text-gray-700 dark:text-gray-300 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`text-gray-700 dark:text-gray-300 ${className}`}>{children}</div>;
 };
 
 /**

@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "New Officers Elected for 2026",
+    "date": "2026-01-28",
+    "author": "Yash W.",
+    "content": "Congratulations to our newly elected officers! Yash W. as President, along with dedicated Vice Presidents and team members. Together, we will make 2026 an amazing year for Hindu YUVA!",
+    "image": "/images/news/officers.jpg",
+    "category": "Announcements",
+    "featured": true,
+    "createdAt": "2026-01-28T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Spring Semester Events Announced",
+    "date": "2026-01-20",
+    "author": "Club President",
+    "content": "Mark your calendars! We have an exciting lineup of events planned for the spring semester. From cultural celebrations to community service projects, there's something for everyone!",
+    "image": "/images/news/spring.jpg",
+    "category": "Events",
+    "featured": true,
+    "createdAt": "2026-01-20T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Community Service Day Success",
+    "date": "2026-01-15",
+    "author": "Volunteer Lead",
+    "content": "Thank you to all 50+ volunteers who participated in our community service day! Together we made a real difference in our local community. Photos from the event are now available in our gallery!",
+    "image": "/images/news/service.jpg",
+    "category": "Community",
+    "featured": false,
+    "createdAt": "2026-01-15T00:00:00Z"
+  }
+]

@@ -1,0 +1,33 @@
+# Prettier Ignore
+# Files and folders to ignore for formatting
+
+# Build outputs
+dist
+build
+coverage
+
+# Dependencies
+node_modules
+
+# Package manager files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Generated files
+*.min.js
+*.min.css
+
+# Assets
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.webp
+
+# Other
+.git
+.github
+*.md

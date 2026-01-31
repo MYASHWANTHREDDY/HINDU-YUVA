@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.env
+.env.local
+uploads/*
+!uploads/.gitkeep
+data/*.json
+!data/events.json
+!data/gallery.json
+!data/news.json
+!data/team.json

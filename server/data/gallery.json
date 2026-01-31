@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Chapter Inauguration",
+    "description": "The official launch of Hindu YUVA at CSUF",
+    "coverImage": "/assets/events/diwali_party.jpg",
+    "media": [
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" }
+    ],
+    "createdAt": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "name": "Holi Celebration",
+    "description": "Festival of colors celebration on campus",
+    "coverImage": "/assets/events/diwali_party.jpg",
+    "media": [
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" }
+    ],
+    "createdAt": "2026-01-15T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "name": "Diwali Night",
+    "description": "Grand Diwali celebration with lights and performances",
+    "coverImage": "/assets/events/diwali_party.jpg",
+    "media": [
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" }
+    ],
+    "createdAt": "2026-01-20T00:00:00Z"
+  },
+  {
+    "id": 4,
+    "name": "Service Project",
+    "description": "Community service day - making a difference together",
+    "coverImage": "/assets/events/diwali_party.jpg",
+    "media": [
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" }
+    ],
+    "createdAt": "2026-01-25T00:00:00Z"
+  },
+  {
+    "id": 5,
+    "name": "Yoga Workshop",
+    "description": "Traditional Indian yoga and meditation session",
+    "coverImage": "/assets/events/diwali_party.jpg",
+    "media": [
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" }
+    ],
+    "createdAt": "2026-02-01T00:00:00Z"
+  },
+  {
+    "id": 6,
+    "name": "Cultural Fest",
+    "description": "Celebration of Hindu culture with performances and food",
+    "coverImage": "/assets/events/diwali_party.jpg",
+    "media": [
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" },
+      { "type": "image", "url": "/assets/events/diwali_party.jpg", "source": "upload" }
+    ],
+    "createdAt": "2026-02-10T00:00:00Z"
+  }
+]

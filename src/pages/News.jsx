@@ -1,71 +1,113 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import { API_URL } from '../constants/api';
 
 function News() {
-  const [news] = useState([
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Default news data (fallback if API fails)
+  const defaultNews = [
     {
       id: 1,
-      title: "Hindu YUVA Chapter Launched at CSUF",
-      date: "Jan 20, 2024",
-      timestamp: new Date("2024-01-20"),
-      author: "Dev Vyas",
-      category: "Announcement",
+      title: 'Hindu YUVA Chapter Launched at CSUF',
+      date: 'Jan 20, 2024',
+      timestamp: new Date('2024-01-20'),
+      author: 'Dev Vyas',
+      category: 'Announcement',
       image: null,
-      description: "We are excited to announce the official launch of Hindu YUVA at California State University, Fullerton!",
-      details: "The launch event included cultural performances, guest speakers, and a meet-and-greet session. Over 100 students attended. This marks the beginning of an exciting journey to build a strong and inclusive Hindu community on campus.",
+      description:
+        'We are excited to announce the official launch of Hindu YUVA at California State University, Fullerton!',
+      details:
+        'The launch event included cultural performances, guest speakers, and a meet-and-greet session. Over 100 students attended. This marks the beginning of an exciting journey to build a strong and inclusive Hindu community on campus.',
     },
     {
       id: 2,
-      title: "Diwali Night Announced",
-      date: "Oct 1, 2024",
-      timestamp: new Date("2024-10-01"),
-      author: "Shalaka Sanap",
-      category: "Event",
+      title: 'Diwali Night Announced',
+      date: 'Oct 1, 2024',
+      timestamp: new Date('2024-10-01'),
+      author: 'Shalaka Sanap',
+      category: 'Event',
       image: null,
-      description: "Join us for a grand Diwali celebration with cultural performances, food, and festivities.",
-      details: "Diwali Night will feature traditional dances, music, and a variety of Indian cuisine. All students are welcome! We will be celebrating the festival of lights with our community. Expect a night filled with joy, laughter, and cultural enrichment.",
+      description:
+        'Join us for a grand Diwali celebration with cultural performances, food, and festivities.',
+      details:
+        'Diwali Night will feature traditional dances, music, and a variety of Indian cuisine. All students are welcome! We will be celebrating the festival of lights with our community. Expect a night filled with joy, laughter, and cultural enrichment.',
     },
     {
       id: 3,
-      title: "Service Project Success",
-      date: "Dec 12, 2024",
-      timestamp: new Date("2024-12-12"),
-      author: "Indrayani Bhoshle",
-      category: "Service",
+      title: 'Service Project Success',
+      date: 'Dec 12, 2024',
+      timestamp: new Date('2024-12-12'),
+      author: 'Indrayani Bhoshle',
+      category: 'Service',
       image: null,
-      description: "Our recent service project was a huge success, thanks to all the volunteers who participated!",
-      details: "We collected and donated over 200 items to local charities. Thank you to everyone who contributed. This initiative embodied our core values of community service and compassion. We raised awareness about local needs while strengthening our bonds as a community.",
+      description:
+        'Our recent service project was a huge success, thanks to all the volunteers who participated!',
+      details:
+        'We collected and donated over 200 items to local charities. Thank you to everyone who contributed. This initiative embodied our core values of community service and compassion. We raised awareness about local needs while strengthening our bonds as a community.',
     },
     {
       id: 4,
-      title: "New Leadership Team Announced",
-      date: "Jan 10, 2025",
-      timestamp: new Date("2025-01-10"),
-      author: "Kanika Sood",
-      category: "Announcement",
+      title: 'New Leadership Team Announced',
+      date: 'Jan 10, 2025',
+      timestamp: new Date('2025-01-10'),
+      author: 'Kanika Sood',
+      category: 'Announcement',
       image: null,
-      description: "We are thrilled to announce our new leadership team for 2025!",
-      details: "The new team brings fresh energy and innovative ideas to Hindu YUVA. We are confident that they will lead us to new heights. Congratulations to all the newly elected officers, and thank you to the outgoing team for their dedicated service.",
+      description: 'We are thrilled to announce our new leadership team for 2025!',
+      details:
+        'The new team brings fresh energy and innovative ideas to Hindu YUVA. We are confident that they will lead us to new heights. Congratulations to all the newly elected officers, and thank you to the outgoing team for their dedicated service.',
     },
     {
       id: 5,
-      title: "Spring Semester Events Calendar Released",
-      date: "Jan 18, 2025",
-      timestamp: new Date("2025-01-18"),
-      author: "Skanda",
-      category: "Event",
+      title: 'Spring Semester Events Calendar Released',
+      date: 'Jan 18, 2025',
+      timestamp: new Date('2025-01-18'),
+      author: 'Skanda',
+      category: 'Event',
       image: null,
-      description: "Check out our exciting events planned for the spring semester!",
-      details: "From cultural workshops to community service initiatives, we have something for everyone. Be sure to follow our social media for updates and registration details. We look forward to seeing you at our events!",
+      description: 'Check out our exciting events planned for the spring semester!',
+      details:
+        'From cultural workshops to community service initiatives, we have something for everyone. Be sure to follow our social media for updates and registration details. We look forward to seeing you at our events!',
     },
-  ]);
+  ];
+
+  useEffect(() => {
+    const loadNews = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/news`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.news && data.news.length > 0) {
+            // Add timestamp for sorting if not present
+            const newsWithTimestamp = data.news.map((item) => ({
+              ...item,
+              timestamp: item.timestamp ? new Date(item.timestamp) : new Date(item.date),
+            }));
+            setNews(newsWithTimestamp);
+          } else {
+            setNews(defaultNews);
+          }
+        } else {
+          setNews(defaultNews);
+        }
+      } catch {
+        setNews(defaultNews);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadNews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getTimeAgo = (date) => {
     const now = new Date();
     const diffTime = Math.abs(now - date);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    if (diffDays === 0) return "Today";
-    if (diffDays === 1) return "Yesterday";
+    if (diffDays === 0) return 'Today';
+    if (diffDays === 1) return 'Yesterday';
     if (diffDays < 7) return `${diffDays} days ago`;
     if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
     if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
@@ -74,12 +116,12 @@ function News() {
 
   const getCategoryColor = (category) => {
     const colors = {
-      Announcement: "bg-blue-100 text-blue-800",
-      Event: "bg-purple-100 text-purple-800",
-      Service: "bg-green-100 text-green-800",
-      Update: "bg-yellow-100 text-yellow-800",
+      Announcement: 'bg-blue-100 text-blue-800',
+      Event: 'bg-purple-100 text-purple-800',
+      Service: 'bg-green-100 text-green-800',
+      Update: 'bg-yellow-100 text-yellow-800',
     };
-    return colors[category] || "bg-gray-100 text-gray-800";
+    return colors[category] || 'bg-gray-100 text-gray-800';
   };
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -89,25 +131,41 @@ function News() {
   const sortedNews = [...news].sort((a, b) => b.timestamp - a.timestamp);
 
   return (
-    <div className="pt-[200px] p-10 min-h-screen bg-orange-50">
+    <div className="pt-[50px] p-10 min-h-screen bg-orange-50">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-orange-700 mb-2 text-center">News & Announcements</h1>
-        <p className="text-center text-gray-600 mb-10">Stay updated with the latest news from Hindu YUVA at CSUF</p>
+        <h1 className="text-4xl font-bold text-orange-700 mb-2 text-center">
+          News & Announcements
+        </h1>
+        <p className="text-center text-gray-600 mb-10">
+          Stay updated with the latest news from Hindu YUVA at CSUF
+        </p>
 
+        {loading ? (
+          <div className="text-center py-20">
+            <p className="text-gray-600 text-lg">Loading news...</p>
+          </div>
+        ) : (
         <div className="space-y-6">
           {sortedNews.map((item) => (
             <div
               key={item.id}
               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-orange-500"
-              onClick={() => { setModalItem(item); setModalOpen(true); }}
+              onClick={() => {
+                setModalItem(item);
+                setModalOpen(true);
+              }}
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(item.category)}`}>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(item.category)}`}
+                  >
                     {item.category}
                   </span>
                 </div>
-                <span className="text-sm text-gray-500 whitespace-nowrap">{getTimeAgo(item.timestamp)}</span>
+                <span className="text-sm text-gray-500 whitespace-nowrap">
+                  {getTimeAgo(item.timestamp)}
+                </span>
               </div>
 
               <h2 className="text-2xl font-bold text-orange-700 mb-3">{item.title}</h2>
@@ -121,7 +179,12 @@ function News() {
               <p className="text-gray-700 leading-relaxed mb-4">{item.description}</p>
 
               {item.image && (
-                <img src={item.image} alt={item.title} className="w-full h-48 object-cover rounded-md mb-4" />
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  className="w-full h-48 object-cover rounded-md mb-4"
+                />
               )}
 
               <button className="text-orange-700 font-semibold hover:text-orange-800 transition-colors">
@@ -130,15 +193,29 @@ function News() {
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {modalOpen && modalItem && (
-        <div className="fixed left-0 right-0 bottom-0 top-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setModalOpen(false)}>
-          <div className="bg-white rounded-lg shadow-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative" onClick={e => e.stopPropagation()}>
-            <button className="absolute top-4 right-4 text-gray-500 hover:text-orange-600 text-3xl font-bold" onClick={() => setModalOpen(false)}>&times;</button>
+        <div
+          className="fixed left-0 right-0 bottom-0 top-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="bg-white rounded-lg shadow-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-orange-600 text-3xl font-bold"
+              onClick={() => setModalOpen(false)}
+            >
+              &times;
+            </button>
 
             <div className="mb-4">
-              <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(modalItem.category)}`}>
+              <span
+                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(modalItem.category)}`}
+              >
                 {modalItem.category}
               </span>
             </div>
@@ -157,7 +234,12 @@ function News() {
             </div>
 
             {modalItem.image && (
-              <img src={modalItem.image} alt={modalItem.title} className="w-full h-64 object-cover rounded-lg mb-6" />
+              <img
+                src={modalItem.image}
+                alt={modalItem.title}
+                loading="lazy"
+                className="w-full h-64 object-cover rounded-lg mb-6"
+              />
             )}
 
             <div className="prose prose-lg">

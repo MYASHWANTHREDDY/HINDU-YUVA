@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "title": "Diwali Celebration 2026",
+    "date": "2026-11-01",
+    "time": "6:00 PM - 10:00 PM",
+    "location": "Student Center, Room 201",
+    "description": "Join us for our grand Diwali celebration with traditional lights, cultural performances, delicious food, and fun activities for everyone!",
+    "image": "/assets/events/diwali_party.jpg",
+    "rsvpCapacity": 200,
+    "rsvpCount": 0,
+    "category": "Cultural",
+    "createdAt": "2026-01-28T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Holi Color Festival",
+    "date": "2026-03-15",
+    "time": "12:00 PM - 4:00 PM",
+    "location": "Campus Green",
+    "description": "Celebrate the festival of colors with traditional games, colored powder, music, dancing, and amazing food from our community!",
+    "image": "/assets/events/diwali_party.jpg",
+    "rsvpCapacity": 300,
+    "rsvpCount": 0,
+    "category": "Cultural",
+    "createdAt": "2026-01-28T00:00:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Navratri Garba Night",
+    "date": "2026-10-05",
+    "time": "7:00 PM - 11:00 PM",
+    "location": "Student Center Ballroom",
+    "description": "Experience traditional Garba dancing! Come in colorful traditional attire and join us for an evening of dance, music, and celebration!",
+    "image": "/assets/events/diwali_party.jpg",
+    "rsvpCapacity": 250,
+    "rsvpCount": 0,
+    "category": "Cultural",
+    "createdAt": "2026-01-28T00:00:00Z"
+  },
+  {
+    "id": 1738108800000,
+    "title": "Yoga & Meditation Workshop",
+    "date": "2026-02-14",
+    "time": "10:00 AM - 12:00 PM",
+    "location": "Sports Complex, Studio A",
+    "description": "Join our wellness session featuring traditional Indian yoga and meditation techniques. Perfect for students of all levels. Bring a mat!",
+    "image": "/uploads/1769658965001-600363523.png",
+    "rsvpCapacity": 50,
+    "rsvpCount": 0,
+    "category": "Education",
+    "createdAt": "2026-01-28T10:30:00Z"
+  }
+]

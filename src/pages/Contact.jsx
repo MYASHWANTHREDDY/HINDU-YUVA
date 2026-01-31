@@ -1,48 +1,64 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
 
     try {
-      // Simulate form submission - you can connect this to a backend later
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 3000);
-    } catch (error) {
-      console.error("Error submitting form:", error);
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 3000);
+      } else {
+        setError(data.error || 'Failed to submit form. Please try again.');
+      }
+    } catch (err) {
+      console.error('Error submitting form:', err);
+      setError('Network error. Please check your connection and try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="pt-[200px] p-10 min-h-screen bg-orange-50">
+    <div className="pt-[50px] p-10 min-h-screen bg-orange-50">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-orange-700 mb-3">Get In Touch</h1>
           <p className="text-gray-600 text-lg">
-            Have questions? Want to attend an event? Or just want to say hello? We'd love to hear from you!
+            Have questions? Want to attend an event? Or just want to say hello? We'd love to hear
+            from you!
           </p>
         </div>
 
@@ -59,7 +75,10 @@ function Contact() {
                 <div>
                   <h3 className="font-bold text-lg text-orange-700 mb-1">Email</h3>
                   <p className="text-gray-600">
-                    <a href="mailto:info@hinduyuvacusf.com" className="text-orange-600 hover:text-orange-700 no-underline font-semibold">
+                    <a
+                      href="mailto:info@hinduyuvacusf.com"
+                      className="text-orange-600 hover:text-orange-700 no-underline font-semibold"
+                    >
                       info@hinduyuvacusf.com
                     </a>
                   </p>
@@ -75,7 +94,10 @@ function Contact() {
                 <div>
                   <h3 className="font-bold text-lg text-orange-700 mb-1">Phone</h3>
                   <p className="text-gray-600">
-                    <a href="tel:+16572785555" className="text-orange-600 hover:text-orange-700 no-underline font-semibold">
+                    <a
+                      href="tel:+16572785555"
+                      className="text-orange-600 hover:text-orange-700 no-underline font-semibold"
+                    >
                       (657) 278-5555
                     </a>
                   </p>
@@ -130,12 +152,17 @@ function Contact() {
               </div>
             )}
 
+            {error && (
+              <div className="mb-6 bg-red-100 border-2 border-red-500 rounded-lg p-6 text-center">
+                <p className="text-red-800 font-semibold text-lg mb-1">✗ Error</p>
+                <p className="text-red-700">{error}</p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-8">
               {/* Name */}
               <div className="mb-5">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Full Name
-                </label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
                 <input
                   type="text"
                   name="name"
@@ -180,9 +207,7 @@ function Contact() {
 
               {/* Subject */}
               <div className="mb-5">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Subject
-                </label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
                 <input
                   type="text"
                   name="subject"
@@ -196,9 +221,7 @@ function Contact() {
 
               {/* Message */}
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Message
-                </label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -216,7 +239,7 @@ function Contact() {
                 disabled={loading}
                 className="w-full px-6 py-3 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -245,34 +268,45 @@ function Contact() {
 
         {/* FAQ Section */}
         <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-3xl font-bold text-orange-700 mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-orange-700 mb-8 text-center">
+            Frequently Asked Questions
+          </h2>
 
           <div className="space-y-6">
             <div>
               <h3 className="font-bold text-lg text-orange-700 mb-2">Who can join Hindu YUVA?</h3>
               <p className="text-gray-700">
-                All CSUF students are welcome to join! You don't need to be Hindu or have any prior cultural knowledge. We welcome everyone interested in learning about and celebrating Hindu culture.
+                All CSUF students are welcome to join! You don't need to be Hindu or have any prior
+                cultural knowledge. We welcome everyone interested in learning about and celebrating
+                Hindu culture.
               </p>
             </div>
 
             <div>
               <h3 className="font-bold text-lg text-orange-700 mb-2">When do you meet?</h3>
               <p className="text-gray-700">
-                We meet every Friday from 5:00 PM to 7:00 PM in the Student Center, Room 201. Special events may have different times, so check our Events page!
+                We meet every Friday from 5:00 PM to 7:00 PM in the Student Center, Room 201.
+                Special events may have different times, so check our Events page!
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold text-lg text-orange-700 mb-2">Do I need to be a member to attend events?</h3>
+              <h3 className="font-bold text-lg text-orange-700 mb-2">
+                Do I need to be a member to attend events?
+              </h3>
               <p className="text-gray-700">
-                No! Everyone is welcome to attend our events. However, we encourage you to join our mailing list to stay updated on upcoming activities.
+                No! Everyone is welcome to attend our events. However, we encourage you to join our
+                mailing list to stay updated on upcoming activities.
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold text-lg text-orange-700 mb-2">How do I stay updated on events?</h3>
+              <h3 className="font-bold text-lg text-orange-700 mb-2">
+                How do I stay updated on events?
+              </h3>
               <p className="text-gray-700">
-                Follow us on Instagram (@hinduyuvacusf) and subscribe to our mailing list on the Join Us page for regular updates!
+                Follow us on Instagram (@hinduyuvacusf) and subscribe to our mailing list on the
+                Join Us page for regular updates!
               </p>
             </div>
           </div>

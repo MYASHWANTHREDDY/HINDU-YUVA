@@ -1,8 +1,8 @@
 /**
  * Alert Component
- * 
+ *
  * A component for displaying important messages or notifications.
- * 
+ *
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Alert content
  * @param {string} props.variant - Alert variant ('info', 'success', 'warning', 'error')
@@ -11,7 +11,7 @@
  * @param {Function} props.onDismiss - Dismiss handler
  * @param {string} props.className - Additional CSS classes
  * @returns {JSX.Element}
- * 
+ *
  * @example
  * <Alert variant="success" title="Success!">
  *   Your form has been submitted successfully.
@@ -69,9 +69,7 @@ function Alert({
       <div className="flex items-start">
         <span className="mr-3 text-lg">{style.icon}</span>
         <div className="flex-1">
-          {title && (
-            <h4 className="font-bold mb-1">{title}</h4>
-          )}
+          {title && <h4 className="font-bold mb-1">{title}</h4>}
           <div>{children}</div>
         </div>
         {dismissible && (

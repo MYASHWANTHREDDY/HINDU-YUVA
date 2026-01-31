@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Yash W.",
+    "role": "President",
+    "image": "/images/team/yash.jpg",
+    "bio": "Founder and visionary leader of Hindu YUVA at CSUF. Passionate about bringing the community together and fostering cultural awareness among Hindu youth.",
+    "email": "yash@hinduyuvacusf.org",
+    "social": {
+      "instagram": "https://instagram.com/yashw",
+      "linkedIn": "https://linkedin.com/in/yashw"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "role": "Vice President",
+    "image": "/images/team/jane.jpg",
+    "bio": "Dedicated event coordinator who brings creativity and energy to all our activities. Jane ensures every event is memorable and inclusive.",
+    "email": "jane@hinduyuvacusf.org",
+    "social": {
+      "instagram": "https://instagram.com/janedoe",
+      "linkedIn": "https://linkedin.com/in/janedoe"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Raj Patel",
+    "role": "Treasurer",
+    "image": "/images/team/raj.jpg",
+    "bio": "Manages our finances with precision and transparency. Raj works hard to ensure we have resources for all our amazing events and initiatives.",
+    "email": "raj@hinduyuvacusf.org",
+    "social": {
+      "instagram": "https://instagram.com/rajpatel",
+      "linkedIn": "https://linkedin.com/in/rajpatel"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Priya Singh",
+    "role": "Secretary",
+    "image": "/images/team/priya.jpg",
+    "bio": "Keeps us organized and connected. Priya manages communications, meeting notes, and helps coordinate our efforts across all projects.",
+    "email": "priya@hinduyuvacusf.org",
+    "social": {
+      "instagram": "https://instagram.com/priyasingh",
+      "linkedIn": "https://linkedin.com/in/priyasingh"
+    }
+  }
+]

@@ -2,10 +2,10 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: "Facebook", url: "https://facebook.com/hinduyuvacusf", icon: "f" },
-    { name: "Instagram", url: "https://www.instagram.com/hinduyuva_csuf/", icon: "📷" },
-    { name: "WhatsApp", url: "https://wa.me/1234567890", icon: "💬" },
-    { name: "Email", url: "mailto:info@hinduyuvacusf.com", icon: "✉️" },
+    { name: 'Facebook', url: 'https://facebook.com/hinduyuvacusf', icon: 'f' },
+    { name: 'Instagram', url: 'https://www.instagram.com/hinduyuva_csuf/', icon: '📷' },
+    { name: 'WhatsApp', url: 'https://wa.me/1234567890', icon: '💬' },
+    { name: 'Email', url: 'mailto:info@hinduyuvacusf.com', icon: '✉️' },
   ];
 
   return (
@@ -17,7 +17,8 @@ function Footer() {
           <div>
             <h3 className="text-xl font-bold text-orange-400 mb-4">Hindu YUVA at CSUF</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Connecting, inspiring, and empowering Hindu youth at California State University, Fullerton.
+              Connecting, inspiring, and empowering Hindu youth at California State University,
+              Fullerton.
             </p>
           </div>
 
@@ -31,22 +32,34 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/about" className="text-gray-300 hover:text-orange-400 transition no-underline">
+                <a
+                  href="/about"
+                  className="text-gray-300 hover:text-orange-400 transition no-underline"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/events" className="text-gray-300 hover:text-orange-400 transition no-underline">
+                <a
+                  href="/events"
+                  className="text-gray-300 hover:text-orange-400 transition no-underline"
+                >
                   Events
                 </a>
               </li>
               <li>
-                <a href="/gallery" className="text-gray-300 hover:text-orange-400 transition no-underline">
+                <a
+                  href="/gallery"
+                  className="text-gray-300 hover:text-orange-400 transition no-underline"
+                >
                   Gallery
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-gray-300 hover:text-orange-400 transition no-underline">
+                <a
+                  href="/contact"
+                  className="text-gray-300 hover:text-orange-400 transition no-underline"
+                >
                   Contact
                 </a>
               </li>
@@ -59,8 +72,11 @@ function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="text-gray-300">
                 <span className="font-semibold">Email:</span>
-                <a href="mailto:info@hinduyuvacusf.com" className="text-orange-400 hover:text-orange-300 no-underline">
-                  {" "}
+                <a
+                  href="mailto:info@hinduyuvacusf.com"
+                  className="text-orange-400 hover:text-orange-300 no-underline"
+                >
+                  {' '}
                   info@hinduyuvacusf.com
                 </a>
               </li>

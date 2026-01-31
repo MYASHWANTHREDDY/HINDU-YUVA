@@ -1,9 +1,9 @@
 /**
  * Type Definitions for Hindu YUVA Website
- * 
+ *
  * This file contains TypeScript type definitions and JSDoc typedefs
  * that can be used throughout the application for better type safety.
- * 
+ *
  * @module types
  */
 

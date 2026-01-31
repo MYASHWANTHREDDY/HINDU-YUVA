@@ -39,12 +39,33 @@ jobs:
         run: npm run lint
         continue-on-error: true
 
+      - name: Check formatting
+        run: npm run format:check
+        continue-on-error: true
+
+      - name: Run tests
+        run: npm run test:run
+        continue-on-error: true
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+        continue-on-error: true
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: false
+        continue-on-error: true
+
       - name: Build project
         run: npm run build
         env:
           VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
           VITE_GOOGLE_SHEETS_ENDPOINT: ${{ secrets.VITE_GOOGLE_SHEETS_ENDPOINT }}
+          VITE_SENTRY_DSN: ${{ secrets.VITE_SENTRY_DSN }}
           VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
+          VITE_APP_VERSION: ${{ github.sha }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -52,6 +73,13 @@ jobs:
           name: dist
           path: dist
           retention-days: 7
+
+      - name: Check bundle size
+        run: |
+          echo "📦 Bundle Size Report"
+          du -sh dist/
+          du -sh dist/assets/* 2>/dev/null || true
+        continue-on-error: true
 
   # ===========================================
   # Lint Job (Parallel)
@@ -77,13 +105,12 @@ jobs:
         run: npm run lint -- --format=stylish
         continue-on-error: true
 
-      - name: Check formatting (if prettier configured)
-        run: |
-          if [ -f ".prettierrc" ] || [ -f ".prettierrc.json" ] || [ -f "prettier.config.js" ]; then
-            npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,md}"
-          else
-            echo "Prettier not configured, skipping format check"
-          fi
+      - name: Check formatting
+        run: npm run format:check
+        continue-on-error: true
+
+      - name: Type check
+        run: npm run type-check
         continue-on-error: true
 
   # ===========================================

@@ -1,9 +1,9 @@
 /**
  * Application Configuration Constants
- * 
+ *
  * This file contains all the configuration values used throughout the application.
  * Values can be overridden by environment variables (prefixed with VITE_).
- * 
+ *
  * @module config
  */
 
@@ -14,7 +14,8 @@
 export const SITE_CONFIG = {
   name: import.meta.env.VITE_SITE_NAME || 'Hindu YUVA at CSUF',
   url: import.meta.env.VITE_SITE_URL || 'https://hinduyuvacusf.org',
-  description: 'Connecting, inspiring, and empowering Hindu youth at California State University, Fullerton.',
+  description:
+    'Connecting, inspiring, and empowering Hindu youth at California State University, Fullerton.',
   tagline: 'Connect, Inspire, Empower',
 };
 
@@ -31,7 +32,9 @@ export const ANALYTICS_CONFIG = {
  * @type {Object}
  */
 export const API_ENDPOINTS = {
-  googleSheets: import.meta.env.VITE_GOOGLE_SHEETS_ENDPOINT || 'https://v1.nocodeapi.com/hinduyuva_csuf/google_sheets/SryTjojDbvjsnBhb?tabId=Sheet1',
+  googleSheets:
+    import.meta.env.VITE_GOOGLE_SHEETS_ENDPOINT ||
+    'https://v1.nocodeapi.com/hinduyuva_csuf/google_sheets/SryTjojDbvjsnBhb?tabId=Sheet1',
   contactForm: import.meta.env.VITE_CONTACT_FORM_ENDPOINT || '',
 };
 
@@ -73,14 +76,14 @@ export const MEETING_INFO = {
  */
 export const NAV_ITEMS = [
   { path: '/', label: 'Home' },
-  { 
-    path: '/about', 
+  {
+    path: '/about',
     label: 'About Us',
     subItems: [
       { path: '/about?section=mission', label: 'Mission & Vision' },
       { path: '/about?section=team', label: 'Team' },
       { path: '/about?section=timeline', label: 'Timeline' },
-    ]
+    ],
   },
   { path: '/events', label: 'Events' },
   { path: '/news', label: 'News' },
@@ -107,7 +110,7 @@ export const THEME_CONFIG = {
       background: '#fff7ed',
       surface: '#ffffff',
       text: '#1f2937',
-    }
+    },
   },
 };
 
@@ -116,10 +119,30 @@ export const THEME_CONFIG = {
  * @type {Object}
  */
 export const EVENT_CATEGORIES = {
-  Announcement: { bg: 'bg-blue-100', text: 'text-blue-800', darkBg: 'dark:bg-blue-900', darkText: 'dark:text-blue-300' },
-  Event: { bg: 'bg-purple-100', text: 'text-purple-800', darkBg: 'dark:bg-purple-900', darkText: 'dark:text-purple-300' },
-  Service: { bg: 'bg-green-100', text: 'text-green-800', darkBg: 'dark:bg-green-900', darkText: 'dark:text-green-300' },
-  Update: { bg: 'bg-yellow-100', text: 'text-yellow-800', darkBg: 'dark:bg-yellow-900', darkText: 'dark:text-yellow-300' },
+  Announcement: {
+    bg: 'bg-blue-100',
+    text: 'text-blue-800',
+    darkBg: 'dark:bg-blue-900',
+    darkText: 'dark:text-blue-300',
+  },
+  Event: {
+    bg: 'bg-purple-100',
+    text: 'text-purple-800',
+    darkBg: 'dark:bg-purple-900',
+    darkText: 'dark:text-purple-300',
+  },
+  Service: {
+    bg: 'bg-green-100',
+    text: 'text-green-800',
+    darkBg: 'dark:bg-green-900',
+    darkText: 'dark:text-green-300',
+  },
+  Update: {
+    bg: 'bg-yellow-100',
+    text: 'text-yellow-800',
+    darkBg: 'dark:bg-yellow-900',
+    darkText: 'dark:text-yellow-300',
+  },
 };
 
 /**

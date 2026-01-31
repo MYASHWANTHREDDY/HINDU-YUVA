@@ -2,14 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 
 /**
  * Optimized Image Component
- * 
+ *
  * Features:
  * - Lazy loading with Intersection Observer
  * - Loading skeleton/placeholder
  * - Error handling with fallback
  * - Blur-up effect on load
  * - Responsive sizing
- * 
+ *
  * @param {Object} props - Component props
  * @param {string} props.src - Image source URL
  * @param {string} props.alt - Alt text for accessibility
@@ -21,7 +21,7 @@ import { useState, useEffect, useRef } from 'react';
  * @param {Function} props.onLoad - Callback when image loads
  * @param {Function} props.onError - Callback on error
  * @returns {JSX.Element}
- * 
+ *
  * @example
  * <OptimizedImage
  *   src="/event-photo.jpg"
@@ -67,13 +67,14 @@ function OptimizedImage({
       }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    const currentRef = imgRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (imgRef.current) {
-        observer.unobserve(imgRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [lazy]);
@@ -98,11 +99,7 @@ function OptimizedImage({
   const imageSrc = hasError ? fallback : src;
 
   return (
-    <div
-      ref={imgRef}
-      className={`relative overflow-hidden ${className}`}
-      {...props}
-    >
+    <div ref={imgRef} className={`relative overflow-hidden ${className}`} {...props}>
       {/* Placeholder/Loading state */}
       {!isLoaded && (
         <div
@@ -154,7 +151,7 @@ function OptimizedImage({
 /**
  * Avatar Image Component
  * Optimized for circular profile images
- * 
+ *
  * @param {Object} props - Component props
  * @param {string} props.src - Image source URL
  * @param {string} props.alt - Alt text
@@ -184,7 +181,7 @@ export function AvatarImage({ src, alt, size = 'md', className = '' }) {
 /**
  * Banner Image Component
  * Optimized for hero/banner images
- * 
+ *
  * @param {Object} props - Component props
  * @param {string} props.src - Image source URL
  * @param {string} props.alt - Alt text
@@ -205,9 +202,7 @@ export function BannerImage({ src, alt, className = '', children }) {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40" />
       {/* Content */}
-      {children && (
-        <div className="relative z-10">{children}</div>
-      )}
+      {children && <div className="relative z-10">{children}</div>}
     </div>
   );
 }

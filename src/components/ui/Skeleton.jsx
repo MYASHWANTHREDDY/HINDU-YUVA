@@ -1,9 +1,9 @@
 /**
  * Skeleton Loading Components
- * 
+ *
  * A collection of skeleton loading placeholders for various UI elements.
  * Used to show loading states while content is being fetched.
- * 
+ *
  * @module Skeleton
  */
 
@@ -14,11 +14,7 @@
  * @returns {JSX.Element}
  */
 export function Skeleton({ className = '' }) {
-  return (
-    <div
-      className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded ${className}`}
-    />
-  );
+  return <div className={`animate-pulse bg-gray-200 dark:bg-gray-700 rounded ${className}`} />;
 }
 
 /**
@@ -32,10 +28,7 @@ export function TextSkeleton({ lines = 3, className = '' }) {
   return (
     <div className={`space-y-3 ${className}`}>
       {[...Array(lines)].map((_, i) => (
-        <Skeleton
-          key={i}
-          className={`h-4 ${i === lines - 1 ? 'w-3/4' : 'w-full'}`}
-        />
+        <Skeleton key={i} className={`h-4 ${i === lines - 1 ? 'w-3/4' : 'w-full'}`} />
       ))}
     </div>
   );
@@ -96,7 +89,9 @@ export function EventCardSkeleton({ className = '' }) {
  */
 export function NewsCardSkeleton({ className = '' }) {
   return (
-    <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border-l-4 border-gray-200 dark:border-gray-600 ${className}`}>
+    <div
+      className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border-l-4 border-gray-200 dark:border-gray-600 ${className}`}
+    >
       <div className="flex justify-between items-start mb-3">
         <Skeleton className="h-6 w-24 rounded-full" />
         <Skeleton className="h-4 w-20" />
@@ -167,12 +162,13 @@ export function PageHeaderSkeleton({ className = '' }) {
  * @returns {JSX.Element}
  */
 export function SkeletonGrid({ count = 4, type = 'card', className = '' }) {
-  const SkeletonComponent = {
-    card: CardSkeleton,
-    event: EventCardSkeleton,
-    news: NewsCardSkeleton,
-    team: TeamMemberSkeleton,
-  }[type] || CardSkeleton;
+  const SkeletonComponent =
+    {
+      card: CardSkeleton,
+      event: EventCardSkeleton,
+      news: NewsCardSkeleton,
+      team: TeamMemberSkeleton,
+    }[type] || CardSkeleton;
 
   return (
     <div className={`grid gap-6 ${className}`}>

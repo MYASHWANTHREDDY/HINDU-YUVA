@@ -1,8 +1,8 @@
 /**
  * Modal Component
- * 
+ *
  * A reusable modal/dialog component with various features.
- * 
+ *
  * @param {Object} props - Component props
  * @param {boolean} props.isOpen - Whether modal is open
  * @param {Function} props.onClose - Close handler
@@ -13,7 +13,7 @@
  * @param {boolean} props.closeOnOverlayClick - Close when clicking overlay
  * @param {string} props.className - Additional CSS classes
  * @returns {JSX.Element|null}
- * 
+ *
  * @example
  * <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Confirm Action">
  *   <p>Are you sure you want to proceed?</p>
@@ -91,10 +91,7 @@ function Modal({
         {(title || showCloseButton) && (
           <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
             {title && (
-              <h2
-                id="modal-title"
-                className="text-xl font-bold text-gray-900 dark:text-gray-100"
-              >
+              <h2 id="modal-title" className="text-xl font-bold text-gray-900 dark:text-gray-100">
                 {title}
               </h2>
             )}
@@ -111,9 +108,7 @@ function Modal({
         )}
 
         {/* Body */}
-        <div className="p-6 overflow-y-auto flex-1">
-          {children}
-        </div>
+        <div className="p-6 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );
@@ -128,7 +123,9 @@ function Modal({
  */
 Modal.Footer = function ModalFooter({ children, className = '' }) {
   return (
-    <div className={`flex justify-end gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 ${className}`}>
+    <div
+      className={`flex justify-end gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 ${className}`}
+    >
       {children}
     </div>
   );

@@ -1,8 +1,8 @@
 /**
  * Button Component
- * 
+ *
  * A reusable button component with various variants and sizes.
- * 
+ *
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Button content
  * @param {string} props.variant - Button variant ('primary', 'secondary', 'outline', 'ghost', 'danger')
@@ -14,7 +14,7 @@
  * @param {string} props.type - Button type ('button', 'submit', 'reset')
  * @param {Function} props.onClick - Click handler
  * @returns {JSX.Element}
- * 
+ *
  * @example
  * <Button variant="primary" size="lg" onClick={handleClick}>
  *   Click Me
@@ -34,11 +34,16 @@ function Button({
 }) {
   // Variant styles
   const variants = {
-    primary: 'bg-orange-600 text-white hover:bg-orange-700 focus:ring-orange-500 dark:bg-orange-500 dark:hover:bg-orange-600',
-    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
-    outline: 'border-2 border-orange-600 text-orange-600 hover:bg-orange-50 focus:ring-orange-500 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-gray-800',
-    ghost: 'text-orange-600 hover:bg-orange-50 focus:ring-orange-500 dark:text-orange-400 dark:hover:bg-gray-800',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 dark:bg-red-500 dark:hover:bg-red-600',
+    primary:
+      'bg-orange-600 text-white hover:bg-orange-700 focus:ring-orange-500 dark:bg-orange-500 dark:hover:bg-orange-600',
+    secondary:
+      'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
+    outline:
+      'border-2 border-orange-600 text-orange-600 hover:bg-orange-50 focus:ring-orange-500 dark:border-orange-400 dark:text-orange-400 dark:hover:bg-gray-800',
+    ghost:
+      'text-orange-600 hover:bg-orange-50 focus:ring-orange-500 dark:text-orange-400 dark:hover:bg-gray-800',
+    danger:
+      'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 dark:bg-red-500 dark:hover:bg-red-600',
   };
 
   // Size styles
@@ -48,7 +53,8 @@ function Button({
     lg: 'px-6 py-3 text-lg',
   };
 
-  const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseClasses =
+    'inline-flex items-center justify-center font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
   return (
     <button
@@ -65,11 +71,7 @@ function Button({
       {...props}
     >
       {loading && (
-        <svg
-          className="animate-spin -ml-1 mr-2 h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
+        <svg className="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
           <circle
             className="opacity-25"
             cx="12"
